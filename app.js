@@ -75,6 +75,7 @@ class MainController {
         `;
     
         const d = dmp.diff_main(base, test);
+        dmp.diff_cleanupSemantic(d);
         console.log(d);
         this.test = dmp.diff_prettyHtml(d);
     }
