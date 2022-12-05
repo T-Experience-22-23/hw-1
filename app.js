@@ -6,6 +6,7 @@ const dmp = new diff_match_patch();
 class MainController {
     constructor($window) {
         this.window_ = $window;
+        this.test = '';
         var base = `
         let t = 0; // time variable
         
@@ -74,7 +75,8 @@ class MainController {
         `;
     
         const d = dmp.diff_main(base, test);
-        console.log(dmp);
+        console.log(d);
+        this.test = dmp.diff_prettyHtml(d);
     }
 
 }
