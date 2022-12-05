@@ -1,6 +1,86 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>Page Title</title>
-<body>
-Hello world
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>On Lines</title>
+    <link rel="icon"
+      type="image/png"
+      href="favicon.ico">
+    <link href="style.css" rel="stylesheet">
+    <link href="angular/angular-material.min.css" rel="stylesheet">
+</head>
+<body ng-app="HW1" ng-controller="MainController as ctrl" ng-cloak>
+<img id="first" class="imported-animation" src="media/first.gif">
+<section id="manifest" layout="column" layout-align="start start">
+    <h1>
+        What is happening?
+    </h1>
+    <p>
+        There is no internet.
+    </p>
+    <h1>
+        What? WHY?
+    </h1>
+    <p>
+        Following the protest of the last few weeks,<br/>
+        the government has decided to cut off internet access<br/>
+        to the general population.
+    </p>
+    <h1>
+        What can we do?
+    </h1>
+    <p>
+        Make our own internet.<br/>
+        This offline site contains instruction for<br/>
+        creating an independent mesh internet deployed on kites.
+    </p>
+</section>
+<img id="mesh" class="imported-animation" src="media/mesh.gif">
+<section id="steps" layout="column" layout-align="start start">
+
+    <h1>
+        So what should you do?
+    </h1>
+    <h2>STEP 1</h2>
+    <p>
+        Find an old router and use <a ng-click="ctrl.showGuide()">this guide</a> to set up a mesh node.
+    </p>
+    <h2>STEP 2</h2>
+    <p>
+        Build the kite, using a safety vest, some bamboo skewers,<br/>
+        and these 3d printing files (optional).<br/>
+        <a ng-click="ctrl.showPlans()">plans</a>
+
+    </p>
+    <a href="3d_files/wifi_kite_parts.stl" class="imported-animation">
+        <img id="get-the-files" class="imported-animation" src="media/download_files.gif">
+    </a>
+    <section id="how-to" class="imported-animation" layout="row" layout-align="center center">
+        <img src="media/how_to.gif">
+    </section>
+    <h2>STEP 3</h2>
+    <img id="final" class="imported-animation" src="media/final.gif">
+</section>
+<!-- DRAGGABLES -->
+<section id="plans"
+         ng-if="ctrl.shouldShowPlans">
+    <h1 ng-click="ctrl.hidePlans()">HIDE</h1>
+    <img src="media/sode-kite-plans-2.gif" draggable style="position: relative; top: 0; left: 0;">
+</section>
+<section id="guide" ng-if="ctrl.shouldShowGuide">
+    <div draggable>
+        🙊 UNDER CONSTRUCTION 🙊
+    </div>
+    <span ng-click="ctrl.hideGuide()">
+            HIDE
+        </span>
+</section>
 </body>
+<script src="angular/angular.js"></script>
+<script src="angular/angular-animate.js"></script>
+<script src="angular/angular-aria.min.js"></script>
+<script src="angular/angular-messages.min.js"></script>
+<script src="angular/angular-material.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
