@@ -2,11 +2,42 @@ const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages', 'ngS
 
 const dmp = new diff_match_patch();
 
+function htmlSeparateDiff(base, text) {
+    dmp = new diff_match_patch();
+    const d = dmp.diff_main(base, text);
+    const formattedBase = [];
+    const formatedTest = [];
+
+    var pattern_amp = /&/g;
+    var pattern_lt = /</g;
+    var pattern_gt = />/g;
+    var pattern_para = /\n/g;
+    for (var x = 0; x < diffs.length; x++) {
+        var op = diffs[x][0];    // Operation (insert, delete, equal)
+        var data = diffs[x][1];  // Text of change.
+        var text = data.replace(pattern_amp, '&amp;').replace(pattern_lt, '&lt;')
+            .replace(pattern_gt, '&gt;').replace(pattern_para, '&para;<br>');
+        switch (op) {
+            case DIFF_INSERT:
+                formatedTest[x] = '<span>' + text + '</span>';
+                break;
+            case DIFF_DELETE:
+                formattedBase[x] = '<span>' + text + '</span>';
+                break;
+            case DIFF_EQUAL:
+                formattedBase[x] = '<span>' + text + '</span>';
+                formatedTest[x] = '<span>' + text + '</span>';
+                break;
+        }
+    }
+    return [formattedBase.join(''),formatedTest.join('')];
+}
 
 class MainController {
     constructor($window) {
         this.window_ = $window;
         this.test = '';
+        this.base = '';
         var base = `
         let t = 0; // time variable
         
@@ -73,13 +104,11 @@ class MainController {
           t = t + 0.001; // update time
         }
         `;
-    
-        const d = dmp.diff_main(base, test);
-        dmp.diff_cleanupSemantic(d);
-        console.log(d);
-        this.test = dmp.diff_prettyHtml(d);
-    }
 
+        const diff_sides = htmlSeparateDiff(base, test);
+        this.base = dmp.diff_prettyHtml(diff_sides[0]);
+        this.test = dmp.diff_prettyHtml(diff_sides[1]);
+    }
 }
 
 app.controller('MainController', MainController);

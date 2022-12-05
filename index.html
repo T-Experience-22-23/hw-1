@@ -10,7 +10,10 @@
     <link href="angular/angular-material.min.css" rel="stylesheet">
 </head>
 <body ng-app="HW1" ng-controller="MainController as ctrl" ng-cloak>
-<section ng-bind-html="ctrl.test"></section>
+<section style="display: flex">
+    <section ng-bind-html="ctrl.base"></section>
+    <section ng-bind-html="ctrl.test"></section>
+</section>
 </body>
 <script src="diff_match_patch.js"></script>
 <script src="angular/angular.js"></script>
