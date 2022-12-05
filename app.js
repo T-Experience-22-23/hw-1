@@ -3,7 +3,7 @@ const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages', 'ngS
 const dmp = new diff_match_patch();
 
 function htmlSeparateDiff(base, text) {
-    dmp = new diff_match_patch();
+    const dmp = new diff_match_patch();
     const d = dmp.diff_main(base, text);
     const formattedBase = [];
     const formatedTest = [];
