@@ -72,11 +72,8 @@ class MainController {
           t = t + 0.001; // update time
         }
         `;
-
-        // Options can be viewed at:
-        // http://prettydiff.com/documentation.xhtml#function_properties
     
-        const d = dmp.diff_main(text1, text2);
+        const d = dmp.diff_main(base, test);
         console.log(dmp);
     }
 
