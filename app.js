@@ -74,7 +74,7 @@ class MainController {
         // http://prettydiff.com/documentation.xhtml#function_properties
     
         var options   = {
-            source: str,
+            source: base,
             diff: test,
             mode : "diff", //  beautify, diff, minify, parse
             lang  : "html",
