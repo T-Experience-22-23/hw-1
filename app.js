@@ -106,8 +106,8 @@ class MainController {
         `;
 
         const diff_sides = htmlSeparateDiff(base, test);
-        this.base = dmp.diff_prettyHtml(diff_sides[0]);
-        this.test = dmp.diff_prettyHtml(diff_sides[1]);
+        this.base = diff_sides[0];
+        this.test = diff_sides[1];
     }
 }
 
