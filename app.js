@@ -5,32 +5,33 @@ const dmp = new diff_match_patch();
 function htmlSeparateDiff(base, text) {
     const dmp = new diff_match_patch();
     const diffs = dmp.diff_main(base, text);
+    dmp.diff_cleanupSemantic(diffs);
     const formattedBase = [];
-    const formatedTest = [];
+    const formattedTest = [];
 
-    var pattern_amp = /&/g;
-    var pattern_lt = /</g;
-    var pattern_gt = />/g;
-    var pattern_para = /\n/g;
-    for (var x = 0; x < diffs.length; x++) {
-        var op = diffs[x][0];    // Operation (insert, delete, equal)
-        var data = diffs[x][1];  // Text of change.
-        var text = data.replace(pattern_amp, '&amp;').replace(pattern_lt, '&lt;')
+    let pattern_amp = /&/g;
+    let pattern_lt = /</g;
+    let pattern_gt = />/g;
+    let pattern_para = /\n/g;
+    for (let x = 0; x < diffs.length; x++) {
+        let op = diffs[x][0];    // Operation (insert, delete, equal)
+        let data = diffs[x][1];  // Text of change.
+        let text = data.replace(pattern_amp, '&amp;').replace(pattern_lt, '&lt;')
             .replace(pattern_gt, '&gt;').replace(pattern_para, '&para;<br>');
         switch (op) {
             case DIFF_INSERT:
-                formatedTest[x] = '<span>' + text + '</span>';
+                formattedTest[x] = '<span class="code addition">' + text + '</span>';
                 break;
             case DIFF_DELETE:
-                formattedBase[x] = '<span>' + text + '</span>';
+                formattedBase[x] = '<span class="code deletion">' + text + '</span>';
                 break;
             case DIFF_EQUAL:
-                formattedBase[x] = '<span>' + text + '</span>';
-                formatedTest[x] = '<span>' + text + '</span>';
+                formattedBase[x] = '<span class="code">' + text + '</span>';
+                formattedTest[x] = '<span class="code">' + text + '</span>';
                 break;
         }
     }
-    return [formattedBase.join(''),formatedTest.join('')];
+    return [formattedBase.join(''),formattedTest.join('')];
 }
 
 class MainController {
@@ -38,7 +39,7 @@ class MainController {
         this.window_ = $window;
         this.test = '';
         this.base = '';
-        var base = `
+        let base = `
         let t = 0; // time variable
         
         function setup() {

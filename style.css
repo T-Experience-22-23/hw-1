@@ -1,0 +1,24 @@
+.code-pair {
+    display: flex;
+    max-width: 60%;
+}
+
+.code-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.code {
+    white-space: pre;
+}
+
+.addition {
+    color: darkgreen;
+    background: lightgreen;
+}
+
+.deletion {
+    text-decoration: line-through;
+    color: darkred;
+    background: palevioletred;
+}
