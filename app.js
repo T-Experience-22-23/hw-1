@@ -1,5 +1,8 @@
 const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages']);
 
+const dmp = new diff_match_patch();
+
+
 class MainController {
     constructor($window) {
         this.window_ = $window;
@@ -73,23 +76,8 @@ class MainController {
         // Options can be viewed at:
         // http://prettydiff.com/documentation.xhtml#function_properties
     
-        var options   = {
-            source: base,
-            diff: test,
-            mode : "diff", //  beautify, diff, minify, parse
-            lang  : "html",
-            wrap : 100,
-            inchar : "\t",  // indent character
-            insize : 1      // number of indent characters per indent
-        }
-    
-        var pd = prettydiff(options); // returns and array: [beautified, report]
-    
-        var pretty = pd[0];
-        var report = pd[1];
-    
-        console.log(pretty);
-        console.log(report);
+        const d = dmp.diff_main(text1, text2);
+        console.log(dmp);
     }
 
 }
