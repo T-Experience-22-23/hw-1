@@ -4,7 +4,7 @@ const dmp = new diff_match_patch();
 
 function htmlSeparateDiff(base, text) {
     const dmp = new diff_match_patch();
-    const d = dmp.diff_main(base, text);
+    const diffs = dmp.diff_main(base, text);
     const formattedBase = [];
     const formatedTest = [];
 
