@@ -3,7 +3,7 @@ const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages']);
 class MainController {
     constructor($window) {
         this.window_ = $window;
-        var base = ```
+        var base = `
         let t = 0; // time variable
         
         function setup() {
@@ -34,9 +34,9 @@ class MainController {
         
           t = t + 0.01; // update time
         }
-        ```;
+        `;
 
-        let test = ```
+        let test = `
         let t = 0; // time variable
         
         function setup() {
@@ -68,7 +68,7 @@ class MainController {
         
           t = t + 0.001; // update time
         }
-        ```
+        `;
 
         // Options can be viewed at:
         // http://prettydiff.com/documentation.xhtml#function_properties
