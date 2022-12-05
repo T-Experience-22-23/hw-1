@@ -1,4 +1,4 @@
-const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages']);
+const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages', 'ngSanitize']);
 
 const dmp = new diff_match_patch();
 
