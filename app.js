@@ -69,7 +69,7 @@ const STUDENTS = [
   `},
 ];
 
-function htmlSeparateDiff(base, text, $sce) {
+function htmlSeparateDiff(base, text) {
     const dmp = new diff_match_patch();
     const diffs = dmp.diff_main(base, text);
     dmp.diff_cleanupSemantic(diffs);
@@ -102,7 +102,7 @@ function htmlSeparateDiff(base, text, $sce) {
 }
 
 class MainController {
-    constructor($window) {
+    constructor($window, $sce) {
         this.window_ = $window;
         this.test = '';
         this.base = '';
@@ -147,7 +147,7 @@ class MainController {
           this.test = diff_sides[1];
           return {
             name: v.name,
-            embed_url: v.embed_url,
+            embed_url: $sce.trustAsHtml(v.embed_url),
             base: diff_sides[0],
             test: diff_sides[1],
           };
