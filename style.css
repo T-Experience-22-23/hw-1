@@ -11,10 +11,10 @@
     padding: 16px;
 }
 
-.code-pair > *:not(:last-child) {
+.code-pair>*:not(:last-child) {
     display: block;
-    margin-right: 16px; 
-} 
+    margin-right: 16px;
+}
 
 .code-side {
     display: flex;
@@ -61,5 +61,10 @@
 }
 
 .student-name * {
-    display:flex;
+    display: flex;
+}
+
+.student-name>span {
+    min-width: 330px;
+    justify-content: center;
 }

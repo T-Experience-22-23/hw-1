@@ -16,7 +16,9 @@
             <md-button class="md-icon-button" ng-click="ctrl.decrementStudent()">
                 <md-icon class="material-icons">navigate_before</md-icon>
             </md-button>
-            {{ctrl.student.name}} ({{ctrl.studentIndex + 1}}/{{ctrl.students.length}})
+            <span>
+                {{ctrl.student.name}} ({{ctrl.studentIndex + 1}}/{{ctrl.students.length}})
+            </span>
             <md-button class="md-icon-button" ng-click="ctrl.incrementStudent()">
                 <md-icon class="material-icons">navigate_next</md-icon>
             </md-button>
