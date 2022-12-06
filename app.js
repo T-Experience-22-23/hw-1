@@ -69,7 +69,7 @@ const STUDENTS = [
   `},
 ];
 
-function htmlSeparateDiff(base, tex, $sce) {
+function htmlSeparateDiff(base, text, $sce) {
     const dmp = new diff_match_patch();
     const diffs = dmp.diff_main(base, text);
     dmp.diff_cleanupSemantic(diffs);
