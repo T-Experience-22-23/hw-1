@@ -138,13 +138,8 @@ function htmlSeparateDiff(base, text) {
 class MainController {
   constructor($window, $sce, $http) {
     this.window_ = $window;
-    this.test = '';
-    this.base = '';
-
     this.students = STUDENTS.map((v) => {
-      const diff_sides = htmlSeparateDiff(BASE, test);
-      this.base = diff_sides[0];
-      this.test = diff_sides[1];
+      const diff_sides = htmlSeparateDiff(BASE, v.code);
       return {
         name: v.name,
         embed_url: $sce.trustAsHtml(v.embed_url),
