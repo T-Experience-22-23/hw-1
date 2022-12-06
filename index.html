@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>T-Experience 22-23 HW 1</title>
-    <link rel="icon"
-      type="image/png"
-      href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link href="style.css" rel="stylesheet">
     <link href="angular/angular-material.min.css" rel="stylesheet">
 </head>
+
 <body ng-app="HW1" ng-controller="MainController as ctrl" ng-cloak>
-<section class="code-pair">
-    <section class="code-side">
-        <p ng-bind-html="ctrl.base"></p>
+    <section class="student" ng-repeat="student in ctrl.students track by student.name">
+        <section class="student-name">{{student.name}}</section>
+        <section class="code-pair">
+            <section class="code-side">
+                <p ng-bind-html="student.base"></p>
+            </section>
+            <section class="code side">
+                <p ng-bind-html="student.test"></p>
+            </section>
+            {{ student.embed_url }}
+        </section>
     </section>
-    <section class="code side">
-        <p ng-bind-html="ctrl.test"></p>
-    </section>
-</section>
 </body>
 <script src="diff_match_patch.js"></script>
 <script src="angular/angular.js"></script>
@@ -28,4 +32,5 @@
 <script src="angular/angular-material.js"></script>
 <script src="app.js"></script>
 </body>
+
 </html>

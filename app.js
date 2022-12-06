@@ -1,8 +1,75 @@
 const app = angular.module('HW1', ['ngAnimate', 'ngMaterial', 'ngMessages', 'ngSanitize']);
 
 const dmp = new diff_match_patch();
+const BASE = `
+let t = 0; // time variable
 
-function htmlSeparateDiff(base, text) {
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(40, 200, 40);
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(2 * PI * t + angle);
+      const myY = y + 20 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 10); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+
+`;
+const STUDENTS = [
+  {name: 'Shakked Naftali', embed_url:'<iframe src="https://editor.p5js.org/shakkedn/full/vuO0E99FM"></iframe>', code:`
+  let t =5; // time variable
+  
+  function setup() {
+    createCanvas(1000, 800);
+    noStroke();
+    fill(40,15, 40);
+  }
+  
+  function draw() {
+    background(10, 30); // translucent background (creates trails)
+  
+    // make a x and y grid of ellipses
+    for (let x = 0; x <= width; x = x + 50) {
+      for (let y = 0; y <= height; y = y + 1) {
+        // starting point of each circle depends on mouse position
+        const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+        const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+        // and also varies based on the particle's location
+        const angle = xAngle * (x / width) + yAngle * (y / height);
+  
+        // each particle moves in a circle
+        const myX = x + 20 * cos(2 * PI * t + angle);
+        const myY = y + 20 * sin(2 * PI * t + angle);
+  
+        ellipse(myX, myY, 10); // draw particle
+      }
+    }
+  
+    t = t + 0.01; // update time
+  }
+  `},
+];
+
+function htmlSeparateDiff(base, tex, $sce) {
     const dmp = new diff_match_patch();
     const diffs = dmp.diff_main(base, text);
     dmp.diff_cleanupSemantic(diffs);
@@ -39,38 +106,6 @@ class MainController {
         this.window_ = $window;
         this.test = '';
         this.base = '';
-        let base = `
-        let t = 0; // time variable
-        
-        function setup() {
-          createCanvas(600, 600);
-          noStroke();
-          fill(40, 200, 40);
-        }
-        
-        function draw() {
-          background(10, 10); // translucent background (creates trails)
-        
-          // make a x and y grid of ellipses
-          for (let x = 0; x <= width; x = x + 30) {
-            for (let y = 0; y <= height; y = y + 30) {
-              // starting point of each circle depends on mouse position
-              const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
-              const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
-              // and also varies based on the particle's location
-              const angle = xAngle * (x / width) + yAngle * (y / height);
-        
-              // each particle moves in a circle
-              const myX = x + 20 * cos(2 * PI * t + angle);
-              const myY = y + 20 * sin(2 * PI * t + angle);
-        
-              ellipse(myX, myY, 10); // draw particle
-            }
-          }
-        
-          t = t + 0.01; // update time
-        }
-        `;
 
         let test = `
         let t = 0; // time variable
@@ -106,9 +141,17 @@ class MainController {
         }
         `;
 
-        const diff_sides = htmlSeparateDiff(base, test);
-        this.base = diff_sides[0];
-        this.test = diff_sides[1];
+        this.students = STUDENTS.map((v) => {
+          const diff_sides = htmlSeparateDiff(BASE, test);
+          this.base = diff_sides[0];
+          this.test = diff_sides[1];
+          return {
+            name: v.name,
+            embed_url: v.embed_url,
+            base: diff_sides[0],
+            test: diff_sides[1],
+          };
+        }); 
     }
 }
 

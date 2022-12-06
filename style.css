@@ -1,6 +1,11 @@
+.student {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
 .code-pair {
     display: flex;
-    max-width: 60%;
 }
 
 .code-side {
