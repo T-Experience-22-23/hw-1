@@ -159,6 +159,7 @@ class MainController {
 
   decrementStudent() {
     this.studentIndex = (this.studentIndex - 1) % this.students.length;
+    if (this.studentIndex < 0) this.studentIndex += this.students.length;
   }
   
   get student() {
