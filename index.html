@@ -7,19 +7,28 @@
     <link rel="icon" type="image/png" href="favicon.ico">
     <link href="style.css" rel="stylesheet">
     <link href="angular/angular-material.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body ng-app="HW1" ng-controller="MainController as ctrl" ng-cloak>
-    <section class="student" ng-repeat="student in ctrl.students track by student.name">
-        <section class="student-name">{{student.name}}</section>
+    <section class="student">
+        <section class="student-name">
+            <md-button class="md-icon-button" ng-click="ctrl.incrementStudent()">
+                <md-icon md-svg-icon="navigate_next" ng-click=""></md-icon>
+            </md-button>
+            {{ctrl.student.name}} ({{ctrl.studentIndex}}/{{ctrl.students.length}})
+            <md-button class="md-icon-button" ng-click="ctrl.decrementStudent()">
+                <md-icon md-svg-icon="navigate_before"></md-icon>
+            </md-button>
+        </section>
         <section class="code-pair">
             <section class="code-side">
-                <p ng-bind-html="student.base"></p>
+                <p ng-bind-html="ctrl.student.base"></p>
             </section>
             <section class="code-side">
-                <p ng-bind-html="student.test"></p>
+                <p ng-bind-html="ctrl.student.test"></p>
             </section>
-            <section class="p5js-ebmedded" ng-bind-html="student.embed_url"></section>
+            <section class="p5js-ebmedded" ng-bind-html="ctrl.student.embed_url"></section>
         </section>
     </section>
 </body>
