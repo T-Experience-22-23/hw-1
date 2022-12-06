@@ -69,21 +69,309 @@ function draw() {
   t = t + 0.01; // update time
 }
 `},
-  {
-    name: 'Maya Shalev', embed_url: '<iframe src="https://editor.p5js.org/mayauni13/full/xiSSlif93"></iframe>', code: `
+{
+  name: 'Maya Shalev', embed_url: '<iframe src="https://editor.p5js.org/mayauni13/full/xiSSlif93"></iframe>', code: `
 let t = 0; // time variable
 function setup() {
-  createCanvas(600, 600);
-  noStroke();
-  fill(100, 500, 100);
+createCanvas(600, 600);
+noStroke();
+fill(100, 500, 100);
 }
 
 function draw() {
-  background(255, 204, 100);; // translucent background (creates trails)
+background(255, 204, 100);; // translucent background (creates trails)
 
-  // make a x and y grid of circles
+// make a x and y grid of circles
+for (let x = 0; x <= width; x = x + 30) {
+  for (let y = 0; y <= height; y = y + 30) {
+    // starting point of each circle depends on mouse position
+    const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+    const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+    // and also varies based on the particle's location
+    const angle = xAngle * (x / width) + yAngle * (y / height);
+
+    // each particle moves in a circle
+    const myX = x + 20 * cos(2 * PI * t + angle);
+    const myY = y + 20 * sin(2 * PI * t + angle);
+
+    ellipse(myX, myY, 10); // draw particle
+  }
+}
+
+t = t + 0.01; // update time
+}    
+`},
+{name: 'Lahan', embed_url: '<iframe src="https://editor.p5js.org/lahanf21/full/TE0ObXK_B"></iframe>', code: `
+let t = 6; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(255, 22, 205);
+}
+
+function draw() {
+  background(0, 120, 255); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 4; x <= width; x = x + 20) {
+    for (let y = 7; y <= height; y = y + 7) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 33, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(4 * PI * t + angle);
+      const myY = y + 25 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 11); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Tamar Galant', embed_url: '<iframe src="https://editor.p5js.org/8gltm1897/full/S9dC51QLK"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(700, 600);
+  noStroke(4);
+  fill("rgb(225,184,252)");
+}
+
+function draw() {
+  background("rgb(228,249,253)"); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 20) {
+    for (let y = 0; y <= height; y = y + 100) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 2 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 2 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 40 * cos(2 * PI * t + angle);
+      const myY = y + 20 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 8); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Noga Shragai', embed_url: '<iframe src="https://editor.p5js.org/nogashragai/full/k0oLe8jyM"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(255, 250, 250
+      );
+}
+
+function draw() {
+  background(30, 90); // translucent background (creates trails)
+
+
+  // make a x and y grid of ellipses
   for (let x = 0; x <= width; x = x + 30) {
     for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(2 * PI * t + angle);
+      const myY = y + 20 * sin(2 * PI * t + angle);
+
+      rect(myX, myY, 70, 10); // draw particle
+    }
+  }
+
+  t = t + 0.001; // update time
+}
+`},
+{name: 'Ron Adar', embed_url: '<iframe src="https://editor.p5js.org/ronadar127/full/V358BgrSt"></iframe>', code: `let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(40, 200, random(255));
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(2 * PI * t + angle);
+      const myY = y + 20 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 2); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Erel Caro', embed_url: '<iframe src="https://editor.p5js.org/erelcaro/full/yBnAFUiJtR"></iframe>', code: `
+let t = 20; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(10, 200, 10);
+}
+
+function draw() {
+  background(200, 100); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -2 * PI, 6 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 6 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 40 * cos(2 * PI * t + angle);
+      const myY = y + 40 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 30); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Michal Efrati', embed_url: '<iframe src="https://editor.p5js.org/michalef8/full/_L_ND0d6k"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(650, 600);
+  noStroke();
+  fill(255, 204, 0);
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 90) {
+    for (let y = 0; y <= height; y = y + 70) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 5 * cos(2 * PI * t + angle);
+      const myY = y + 5 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 10); // draw particle
+    }
+  }
+
+  t = t + 0.04; // update time
+}
+`},
+{name: 'Shayel', embed_url: '<iframe src="https://editor.p5js.org/shayelhn/full/9uV8J_-51"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(200, 40, 200);
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -2 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(4 * PI * t + angle);
+      const myY = y + 20 * sin(1 * PI * t + angle);
+
+      ellipse(myX, myY, 7); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Amit Engel', embed_url: '<iframe src="https://editor.p5js.org/amit_engel26/full/Imlzbn05g"></iframe>', code: `let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(500, 150, 500);
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 35) {
+    for (let y = 0; y <= height; y = y + 5) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 6 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 6 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 10 * cos(2 * PI * t + angle);
+      const myY = y + 10 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 10); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Or Burshtein', embed_url: '<iframe src="https://editor.p5js.org/orburstein/full/yIF0dMRPH"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(800, 800);
+  noStroke();
+  fill(255, 100, 40);
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 100) {
+    for (let y = 0; y <= height; y = y + 100) {
       // starting point of each circle depends on mouse position
       const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
       const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
@@ -99,8 +387,137 @@ function draw() {
   }
 
   t = t + 0.01; // update time
-}    
+}
 `},
+{name: 'Ido Taragano', embed_url: '<iframe src="https://editor.p5js.org/idotaragano/full/PUThPvuUO"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(740, 725);
+  noStroke;
+  //or stroke (1, 0, 0)
+  fill(180, 0, 0);
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, 4 * PI, -4 * PI, true);
+      const yAngle = map(mouseY, 0, height, 4 * PI, -4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 300 * cos(3 * PI * t + angle);
+      const myY = y + 30 * sin(30 * PI * t + angle);
+
+      triangle(myX, 350, 380, myY, 300, 100);// draw particle
+    }
+  }
+
+  t = t + 0.001; // update time
+}
+`},
+{name: 'Michal Lichtenstein', embed_url: '<iframe src="https://editor.p5js.org/MichalFania/full/g1Qmj7pIr"></iframe>', code: `let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(30, 50, 250);
+}
+
+function draw() {
+  background(15, 30, 20); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 50) {
+    for (let y = 0; y <= height; y = y + 50) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -5 * PI, 5 * PI, true);
+      const yAngle = map(mouseY, 0, height, -5 * PI, 5 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 35 * cos(5 * PI * t + angle);
+      const myY = y + 35 * sin(5 * PI * t + angle);
+
+      ellipse(myX, myY, 50); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Yuval Keshet', embed_url: '<iframe src="https://editor.p5js.org/yuvalkeshet/full/RNLiGwa1d"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  fill(50, 50, random(255));
+}
+
+function draw() {
+  background(10, 10); // translucent background (creates trails)
+//frameRate(10);
+fill(random(255), random(255), random(255));
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(30, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(2 * PI * t + angle);
+      const myY = y + 20 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 10); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+{name: 'Ori Druckman', embed_url: '<iframe src="https://editor.p5js.org/12345ori/full/A0za9E7Qb"></iframe>', code: `
+let t = 0; // time variable
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(100, 0, 255);
+}
+
+function draw() {
+  background(150, 150); // translucent background (creates trails)
+
+  // make a x and y grid of ellipses
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 70 * cos(2 * PI * t + angle);
+      const myY = y + 70 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 10); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}
+`},
+// {name: '', embed_url: '', code: ``}, // empty template
 ];
 
 function htmlSeparateDiff(base, text) {
