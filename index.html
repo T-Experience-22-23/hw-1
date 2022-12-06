@@ -11,8 +11,8 @@
 </head>
 
 <body ng-app="HW1" ng-controller="MainController as ctrl" ng-cloak>
-    <section class="student">
-        <section class="student-name">
+    <md-card class="student">
+        <md-toolbar class="student-name">
             <md-button class="md-icon-button" ng-click="ctrl.incrementStudent()">
                 <md-icon md-svg-icon="navigate_next" ng-click=""></md-icon>
             </md-button>
@@ -20,17 +20,17 @@
             <md-button class="md-icon-button" ng-click="ctrl.decrementStudent()">
                 <md-icon md-svg-icon="navigate_before"></md-icon>
             </md-button>
-        </section>
-        <section class="code-pair">
-            <section class="code-side">
+        </md-toolbar>
+        <md-content class="code-pair">
+            <md-card class="code-side">
                 <p ng-bind-html="ctrl.student.base"></p>
-            </section>
-            <section class="code-side">
+            </md-card>
+            <md-card class="code-side">
                 <p ng-bind-html="ctrl.student.test"></p>
-            </section>
+            </md-card>
             <section class="p5js-ebmedded" ng-bind-html="ctrl.student.embed_url"></section>
-        </section>
-    </section>
+        </md-content>
+    </md-card>
 </body>
 <script src="diff_match_patch.js"></script>
 <script src="angular/angular.js"></script>
