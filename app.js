@@ -34,6 +34,7 @@ function draw() {
 }
 
 `;
+
 const STUDENTS = [
   {
     name: 'Shakked Naftali', embed_url: '<iframe src="https://editor.p5js.org/shakkedn/full/vuO0E99FM"></iframe>', code: `
@@ -67,6 +68,38 @@ function draw() {
 
   t = t + 0.01; // update time
 }
+`},
+  {
+    name: 'Maya Shalev', embed_url: '<iframe src="https://editor.p5js.org/mayauni13/full/xiSSlif93"></iframe>', code: `
+let t = 0; // time variable
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  fill(100, 500, 100);
+}
+
+function draw() {
+  background(255, 204, 100);; // translucent background (creates trails)
+
+  // make a x and y grid of circles
+  for (let x = 0; x <= width; x = x + 30) {
+    for (let y = 0; y <= height; y = y + 30) {
+      // starting point of each circle depends on mouse position
+      const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+      const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+      // and also varies based on the particle's location
+      const angle = xAngle * (x / width) + yAngle * (y / height);
+
+      // each particle moves in a circle
+      const myX = x + 20 * cos(2 * PI * t + angle);
+      const myY = y + 20 * sin(2 * PI * t + angle);
+
+      ellipse(myX, myY, 10); // draw particle
+    }
+  }
+
+  t = t + 0.01; // update time
+}    
 `},
 ];
 
