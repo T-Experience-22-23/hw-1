@@ -138,6 +138,7 @@ function htmlSeparateDiff(base, text) {
 class MainController {
   constructor($window, $sce, $http) {
     this.window_ = $window;
+    this.http_ = $http;
     this.students = STUDENTS.map((v) => {
       const diff_sides = htmlSeparateDiff(BASE, v.code);
       return {
@@ -148,8 +149,8 @@ class MainController {
       };
     });
     this.studentIndex = 0;
-    this.$http.get('http://editor.p5js.org/mayauni13/sketches/xiSSlif93').then((v) => void console.log(v));;
-    this.$http.get('https://editor.p5js.org/mayauni13/sketches/xiSSlif93').then((v) => void console.log(v));;
+    this.http_.get('http://editor.p5js.org/mayauni13/sketches/xiSSlif93').then((v) => void console.log(v));;
+    this.http_.get('https://editor.p5js.org/mayauni13/sketches/xiSSlif93').then((v) => void console.log(v));;
   }
 
   incrementStudent() {
