@@ -11,6 +11,11 @@
 .code-side {
     display: flex;
     flex-direction: column;
+    font-size: 0.7em;
+}
+
+.p5js-ebmedded {
+    display: flex;
 }
 
 .code {
