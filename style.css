@@ -49,13 +49,13 @@ body {
 
 .addition {
     color: darkgreen;
-    background: lightgreen;
+    background: #bcffbc;
 }
 
 .deletion {
     text-decoration: line-through;
     color: darkred;
-    background: palevioletred;
+    background: #ffc0d5;
 }
 
 .student-name {
